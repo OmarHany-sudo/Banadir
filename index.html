@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banadir - مطعم وكافيه سوداني أصيل في مصر</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> <!-- AOS for animations -->
     <style>
         :root {
-            --bg-primary: #3E2723; /* بني داكن */
-            --accent-gold: #D4AF37; /* ذهبي */
-            --accent-green: #2E7D32; /* أخضر غامق */
-            --text-light: #FFFFFF;
-            --text-dark: #333333;
-            --card-bg: #F5F5F5;
+            --bg-primary: #2C1A12; /* بني داكن */
+            --accent-gold: #D4A017; /* ذهبي */
+            --accent-green: #1A3C34; /* أخضر غامق */
+            --accent-orange: #E65100; /* برتقالي */
+            --text-light: #F5F5F5;
+            --text-dark: #1A1A1A;
+            --card-bg: #FFFFFF;
+            --shadow: 0 6px 20px rgba(0,0,0,0.15);
             --transition: all 0.3s ease;
         }
 
         [data-theme="dark"] {
             --bg-primary: #1A1A1A;
+            --card-bg: #2D2D2D;
             --text-light: #FFFFFF;
             --text-dark: #E0E0E0;
-            --card-bg: #2D2D2D;
         }
 
         body {
@@ -34,7 +37,7 @@
             direction: rtl;
         }
 
-        /* Sudanese Pattern Background - بسيط بـ CSS */
+        /* Sudanese Pattern SVG */
         body::before {
             content: '';
             position: fixed;
@@ -42,82 +45,82 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(46, 125, 50, 0.05) 0%, transparent 50%);
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cpath fill="%23D4A017" fill-opacity="0.1" d="M0 0 L50 50 L100 0 L50 100 Z"/%3E%3C/svg%3E') repeat;
             z-index: -1;
-            opacity: 0.5;
+            opacity: 0.2;
         }
 
         /* Header */
         header {
-            background: rgba(62, 39, 35, 0.9);
+            background: rgba(44, 26, 18, 0.95);
             padding: 1rem 0;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
         nav {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
             padding: 0 2rem;
         }
 
         .logo {
             font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--accent-gold);
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .nav-links {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            list-style: none;
         }
 
         .nav-links a {
             color: var(--text-light);
             text-decoration: none;
+            font-size: 1.1rem;
             transition: var(--transition);
-            font-family: 'Tajawal', sans-serif;
         }
 
         .nav-links a:hover {
-            color: var(--accent-gold);
+            color: var(--accent-orange);
+            text-decoration: underline;
         }
 
-        .theme-toggle {
+        .theme-toggle, .lang-toggle {
             background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover, .lang-toggle:hover {
+            background: var(--accent-gold);
+            color: var(--text-dark);
         }
 
         /* Sections */
         section {
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Home */
         #home {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover; /* Placeholder for Sudanese food image */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -128,91 +131,163 @@
         }
 
         .welcome-text {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-family: 'Tajawal', sans-serif;
+            font-size: 1.8rem;
+            margin: 1rem 0;
+            font-weight: 300;
+            max-width: 600px;
         }
 
         .cta-btn {
             background: var(--accent-gold);
             color: var(--text-dark);
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             border: none;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            font-family: 'Tajawal', sans-serif;
         }
 
         .cta-btn:hover {
+            background: var(--accent-orange);
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow);
         }
 
-        /* Menu, Offers, About, Contact */
+        /* Menu */
+        #menu {
+            background: var(--card-bg);
+            color: var(--text-dark);
+        }
+
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-filters button {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .menu-filters button:hover, .menu-filters button.active {
+            background: var(--accent-orange);
+            color: var(--text-light);
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .card {
             background: var(--card-bg);
-            border-radius: 15px;
-            padding: 1.5rem;
-            text-align: center;
-            color: var(--text-dark);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
             transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         .card img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 10px;
             transition: var(--transition);
         }
 
-        .card img:hover {
-            transform: scale(1.05);
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
         }
 
         .card h3 {
             font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
             color: var(--accent-gold);
+            margin: 0.5rem 0;
         }
 
         .price {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--accent-green);
             font-weight: bold;
         }
 
-        /* Special Offers */
+        /* Modal for Dish Details */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Offers */
         #offers .banner {
-            background: linear-gradient(rgba(212, 175, 55, 0.1), rgba(46, 125, 50, 0.1)), url('https://example.com/offer-bg.jpg'); /* Placeholder */
+            background: linear-gradient(rgba(212, 175, 55, 0.2), rgba(26, 60, 52, 0.2)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
             padding: 3rem;
             text-align: center;
-            border-radius: 15px;
+            border-radius: 20px;
+            color: var(--text-light);
+            box-shadow: var(--shadow);
         }
 
         /* About */
         #about {
+            background: var(--card-bg);
+            color: var(--text-dark);
             text-align: center;
         }
 
         #about img {
             width: 100%;
-            max-width: 600px;
-            border-radius: 15px;
+            max-width: 700px;
+            border-radius: 20px;
             margin-top: 2rem;
         }
 
@@ -220,32 +295,32 @@
         .contact-icons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin: 2rem 0;
         }
 
         .contact-icons a {
-            display: inline-block;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--accent-gold);
             color: var(--text-dark);
-            text-align: center;
-            line-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             transition: var(--transition);
         }
 
         .contact-icons a:hover {
+            background: var(--accent-orange);
             transform: scale(1.1);
-            background: var(--accent-green);
         }
 
         #map {
             width: 100%;
-            height: 400px;
-            border-radius: 15px;
+            height: 450px;
+            border-radius: 20px;
             margin-top: 2rem;
         }
 
@@ -253,59 +328,69 @@
         .testimonials {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .testimonial {
-            background: rgba(212, 175, 55, 0.1);
-            padding: 1rem;
-            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 1.5rem;
+            border-radius: 15px;
             text-align: center;
+            color: var(--text-dark);
         }
 
         /* Fixed Contact Button */
         .fixed-btn {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 30px;
+            left: 30px;
             background: var(--accent-gold);
             color: var(--text-dark);
-            padding: 1rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             font-size: 1.2rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            box-shadow: var(--shadow);
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: var(--transition);
         }
 
         .fixed-btn:hover {
+            background: var(--accent-orange);
             transform: scale(1.1);
-            background: var(--accent-green);
         }
 
-        /* Language Toggle */
-        .lang-toggle {
-            position: absolute;
-            left: 2rem;
-            top: 1rem;
-            background: none;
-            border: 1px solid var(--accent-gold);
-            color: var(--accent-gold);
-            padding: 0.5rem;
-            border-radius: 5px;
-            cursor: pointer;
+        /* QR Code */
+        .qr-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        #qr-code {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Mobile menu can be added with JS */
+                display: none; /* Add mobile menu with JS */
             }
 
-            section {
-                padding: 3rem 1rem;
+            .logo {
+                font-size: 2rem;
+            }
+
+            .welcome-text {
+                font-size: 1.4rem;
+            }
+
+            .cta-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
             }
 
             .grid {
@@ -314,22 +399,23 @@
 
             .contact-icons {
                 flex-direction: column;
-                align-items: center;
+            }
+
+            .fixed-btn {
+                bottom: 20px;
+                left: 20px;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
             }
         }
 
-        /* QR Code Section - Add in footer or home */
-        .qr-section {
-            text-align: center;
-            margin: 2rem 0;
+        /* AOS Animation */
+        [data-aos] {
+            opacity: 0;
         }
 
-        .qr-code {
-            width: 150px;
-            height: 150px;
-            background: #000; /* Placeholder for QR */
-            margin: 0 auto;
-            border-radius: 10px;
+        [data-aos].aos-animate {
+            opacity: 1;
         }
     </style>
 </head>
@@ -350,69 +436,86 @@
         </nav>
     </header>
 
-    <section id="home">
-        <h1 class="logo" style="font-size: 4rem;">Banadir</h1>
+    <section id="home" data-aos="fade-up">
+        <h1 class="logo" style="font-size: 4.5rem;">Banadir</h1>
         <p class="welcome-text">Banadir… الطابع السوداني الأصيل في قلب مصر</p>
         <button class="cta-btn" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">شاهد المينيو</button>
         <div class="qr-section">
-            <p>مسح QR للدخول السريع</p>
-            <div class="qr-code"></div> <!-- يمكن توليده بـ JS library مثل qrcode.js -->
+            <p>امسح الكود لفتح المينيو</p>
+            <div id="qr-code"></div>
         </div>
     </section>
 
-    <section id="menu">
+    <section id="menu" data-aos="fade-up">
         <h2>المينيو</h2>
+        <div class="menu-filters">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="food">أكلات سودانية</button>
+            <button class="filter-btn" data-filter="grill">مشويات</button>
+            <button class="filter-btn" data-filter="drinks">مشروبات</button>
+            <button class="filter-btn" data-filter="desserts">حلويات</button>
+        </div>
         <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="كسره"> <!-- Sudanese food placeholder from search results inspiration -->
-                <h3>كسره</h3>
-                <p>طبق تقليدي سوداني شهي.</p>
-                <div class="price">50 جنيه</div>
+            <div class="card" data-category="food" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="كسره">
+                <div class="card-content">
+                    <h3>كسره</h3>
+                    <p>طبق سوداني تقليدي بمذاق أصيل.</p>
+                    <div class="price">50 جنيه</div>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://example.com/grilled.jpg" alt="مشويات">
-                <h3>مشويات</h3>
-                <p>لحوم مشوية طازجة.</p>
-                <div class="price">80 جنيه</div>
+            <div class="card" data-category="grill" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1529693662653-38d54a4f75cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="مشويات">
+                <div class="card-content">
+                    <h3>مشويات</h3>
+                    <p>لحوم مشوية طازجة مع توابل سودانية.</p>
+                    <div class="price">80 جنيه</div>
+                </div>
             </div>
-            <!-- Add more cards for drinks, desserts -->
-            <div class="card">
-                <img src="https://example.com/drink.jpg" alt="مشروبات">
-                <h3>شاي سوداني</h3>
-                <p>مشروب تقليدي منعش.</p>
-                <div class="price">20 جنيه</div>
+            <div class="card" data-category="drinks" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1513553404607-9881d7b0b407?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="شاي سوداني">
+                <div class="card-content">
+                    <h3>شاي سوداني</h3>
+                    <p>مشروب تقليدي منعش بنكهة فريدة.</p>
+                    <div class="price">20 جنيه</div>
+                </div>
             </div>
-            <div class="card">
-                <img src="https://example.com/dessert.jpg" alt="حلويات">
-                <h3>عصيدة</h3>
-                <p>حلوى سودانية لذيذة.</p>
-                <div class="price">30 جنيه</div>
+            <div class="card" data-category="desserts" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://images.unsplash.com/photo-1563720223516-8fdb2ce2e946?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="عصيدة">
+                <div class="card-content">
+                    <h3>عصيدة</h3>
+                    <p>حلوى سودانية لذيذة بنكهة تقليدية.</p>
+                    <div class="price">30 جنيه</div>
+                </div>
             </div>
         </div>
-        <div class="testimonials">
+        <div class="testimonials" data-aos="fade-up">
             <div class="testimonial">
-                <p>"تجربة رائعة! الأكل أصيل تماماً."</p>
-                <small>- عميل سعيد</small>
+                <p>"تجربة مدهشة! الأكل ينقلك للسودان مباشرة."</p>
+                <small>- محمد، عميل</small>
             </div>
-            <!-- Add more -->
+            <div class="testimonial">
+                <p>"أفضل مكان لتجربة المطبخ السوداني في مصر!"</p>
+                <small>- سارة، زائرة</small>
+            </div>
         </div>
     </section>
 
-    <section id="offers">
+    <section id="offers" data-aos="fade-up">
         <h2>العروض الخاصة</h2>
         <div class="banner">
-            <h3>عرض الأسبوع: كسره + مشروب بـ 60 جنيه!</h3>
-            <p>قابل للتحديث بسهولة.</p>
+            <h3>عرض نهاية الأسبوع: وجبة كسره + مشروب بـ 60 جنيه!</h3>
+            <p>متوفر من الخميس إلى السبت.</p>
         </div>
     </section>
 
-    <section id="about">
+    <section id="about" data-aos="fade-up">
         <h2>عن Banadir</h2>
-        <p>Banadir يجمع بين الأصالة السودانية والذوق العصري ليقدم لك تجربة فريدة.</p>
-        <img src="https://example.com/interior.jpg" alt="ديكور داخلي"> <!-- From search: Sudanese restaurant interior -->
+        <p>Banadir يجمع بين الأصالة السودانية والذوق العصري ليقدم لك تجربة فريدة مليئة بالنكهات والدفء.</p>
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ديكور المطعم">
     </section>
 
-    <section id="contact">
+    <section id="contact" data-aos="fade-up">
         <h2>اتصل بنا</h2>
         <div class="contact-icons">
             <a href="tel:+20123456789"><i class="fas fa-phone"></i></a>
@@ -420,38 +523,82 @@
             <a href="https://maps.google.com/?q=cairo"><i class="fas fa-map-marker-alt"></i></a>
             <a href="https://instagram.com/banadir"><i class="fab fa-instagram"></i></a>
         </div>
-        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450.123456789!2d31.235712!3d30.044419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDI2JzUxLjQiTiAzMcKwMTQnMDcuNCJF!5e0!3m2!1sen!2sus!4v1630000000000" allowfullscreen="" loading="lazy"></iframe> <!-- Cairo placeholder -->
+        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450.123456789!2d31.235712!3d30.044419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDI2JzUxLjQiTiAzMcKwMTQnMDcuNCJF!5e0!3m2!1sen!2sus!4v1630000000000" allowfullscreen="" loading="lazy"></iframe>
     </section>
 
+    <!-- Modal -->
+    <div class="modal" id="dish-modal">
+        <div class="modal-content" data-aos="zoom-in">
+            <span class="close-modal">&times;</span>
+            <img id="modal-img" src="" alt="Dish">
+            <h3 id="modal-title"></h3>
+            <p id="modal-desc"></p>
+            <div class="price" id="modal-price"></div>
+        </div>
+    </div>
+
     <button class="fixed-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-        <i class="fas fa-phone"></i> اتصل بنا
+        <i class="fas fa-phone"></i> اطلب الآن
     </button>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.0/build/qrcode.min.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init({ duration: 800, once: true });
+
         // Theme Toggle
         function toggleTheme() {
             const body = document.body;
             const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', newTheme);
+            body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
             document.querySelector('.theme-toggle i').classList.toggle('fa-moon');
             document.querySelector('.theme-toggle i').classList.toggle('fa-sun');
         }
 
-        // Language Toggle (Simple: Switch dir and texts)
+        // Language Toggle
         function toggleLang() {
             const body = document.body;
             const isArabic = body.lang === 'ar';
             body.lang = isArabic ? 'en' : 'ar';
             body.dir = isArabic ? 'ltr' : 'rtl';
-            body.style.fontFamily = isArabic ? "'Tajawal', sans-serif" : "'Poppins', sans-serif";
-            // Update texts - For full support, use data-ar/en attributes
-            location.reload(); // Simple reload for demo; implement properly with JS
+            document.querySelector('.lang-toggle').textContent = isArabic ? 'AR' : 'EN';
+            // Update texts dynamically (implement with data attributes for full support)
+            location.reload();
         }
 
-        // QR Code Generation (Add qrcode library for real)
-        // For demo, placeholder
-    </script>
+        // Menu Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                cards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        card.setAttribute('data-aos', 'fade-up');
+                        AOS.refresh();
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
 
-</body>
-  </html>
+        // Modal
+        const modal = document.getElementById('dish-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalPrice = document.getElementById('modal-price');
+        const closeModal = document.querySelector('.close-modal');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                modalImg.src = card.querySelector('img').src;
+                modalTitle.textContent = card.querySelector('h3').textContent;
+                modalDesc.textContent = card.querySelector('p').textContent;
+                modalPrice.textContent = card.querySelector('.price').textContent;
+        
