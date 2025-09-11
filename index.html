@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banadir - مطعم وكافيه سوداني أصيل في مصر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #3E2723; /* بني داكن */
+            --accent-gold: #D4AF37; /* ذهبي */
+            --accent-green: #2E7D32; /* أخضر غامق */
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+            --card-bg: #F5F5F5;
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1A1A1A;
+            --text-light: #FFFFFF;
+            --text-dark: #E0E0E0;
+            --card-bg: #2D2D2D;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            direction: rtl;
+        }
+
+        /* Sudanese Pattern Background - بسيط بـ CSS */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(46, 125, 50, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* Header */
+        header {
+            background: rgba(62, 39, 35, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home */
+        #home {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover; /* Placeholder for Sudanese food image */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .welcome-text {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .cta-btn {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Menu, Offers, About, Contact */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-dark);
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .card img:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--accent-gold);
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* Special Offers */
+        #offers .banner {
+            background: linear-gradient(rgba(212, 175, 55, 0.1), rgba(46, 125, 50, 0.1)), url('https://example.com/offer-bg.jpg'); /* Placeholder */
+            padding: 3rem;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        /* About */
+        #about {
+            text-align: center;
+        }
+
+        #about img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        /* Contact */
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-icons a {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            text-align: center;
+            line-height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .contact-icons a:hover {
+            transform: scale(1.1);
+            background: var(--accent-green);
+        }
+
+        #map {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Fixed Contact Button */
+        .fixed-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 1rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .fixed-btn:hover {
+            transform: scale(1.1);
+            background: var(--accent-green);
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: absolute;
+            left: 2rem;
+            top: 1rem;
+            background: none;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Mobile menu can be added with JS */
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-icons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* QR Code Section - Add in footer or home */
+        .qr-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: #000; /* Placeholder for QR */
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <header>
+        <nav>
+            <div class="logo">Banadir</div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#menu">المينيو</a></li>
+                <li><a href="#offers">العروض</a></li>
+                <li><a href="#about">عنا</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+            <button class="lang-toggle" onclick="toggleLang()">EN</button>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1 class="logo" style="font-size: 4rem;">Banadir</h1>
+        <p class="welcome-text">Banadir… الطابع السوداني الأصيل في قلب مصر</p>
+        <button class="cta-btn" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">شاهد المينيو</button>
+        <div class="qr-section">
+            <p>مسح QR للدخول السريع</p>
+            <div class="qr-code"></div> <!-- يمكن توليده بـ JS library مثل qrcode.js -->
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2>المينيو</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="كسره"> <!-- Sudanese food placeholder from search results inspiration -->
+                <h3>كسره</h3>
+                <p>طبق تقليدي سوداني شهي.</p>
+                <div class="price">50 جنيه</div>
+            </div>
+            <div class="card">
+                <img src="https://example.com/grilled.jpg" alt="مشويات">
+                <h3>مشويات</h3>
+                <p>لحوم مشوية طازجة.</p>
+                <div class="price">80 جنيه</div>
+            </div>
+            <!-- Add more cards for drinks, desserts -->
+            <div class="card">
+                <img src="https://example.com/drink.jpg" alt="مشروبات">
+                <h3>شاي سوداني</h3>
+                <p>مشروب تقليدي منعش.</p>
+                <div class="price">20 جنيه</div>
+            </div>
+            <div class="card">
+                <img src="https://example.com/dessert.jpg" alt="حلويات">
+                <h3>عصيدة</h3>
+                <p>حلوى سودانية لذيذة.</p>
+                <div class="price">30 جنيه</div>
+            </div>
+        </div>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"تجربة رائعة! الأكل أصيل تماماً."</p>
+                <small>- عميل سعيد</small>
+            </div>
+            <!-- Add more -->
+        </div>
+    </section>
+
+    <section id="offers">
+        <h2>العروض الخاصة</h2>
+        <div class="banner">
+            <h3>عرض الأسبوع: كسره + مشروب بـ 60 جنيه!</h3>
+            <p>قابل للتحديث بسهولة.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>عن Banadir</h2>
+        <p>Banadir يجمع بين الأصالة السودانية والذوق العصري ليقدم لك تجربة فريدة.</p>
+        <img src="https://example.com/interior.jpg" alt="ديكور داخلي"> <!-- From search: Sudanese restaurant interior -->
+    </section>
+
+    <section id="contact">
+        <h2>اتصل بنا</h2>
+        <div class="contact-icons">
+            <a href="tel:+20123456789"><i class="fas fa-phone"></i></a>
+            <a href="https://wa.me/20123456789"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://maps.google.com/?q=cairo"><i class="fas fa-map-marker-alt"></i></a>
+            <a href="https://instagram.com/banadir"><i class="fab fa-instagram"></i></a>
+        </div>
+        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450.123456789!2d31.235712!3d30.044419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDI2JzUxLjQiTiAzMcKwMTQnMDcuNCJF!5e0!3m2!1sen!2sus!4v1630000000000" allowfullscreen="" loading="lazy"></iframe> <!-- Cairo placeholder -->
+    </section>
+
+    <button class="fixed-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+        <i class="fas fa-phone"></i> اتصل بنا
+    </button>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            document.querySelector('.theme-toggle i').classList.toggle('fa-moon');
+            document.querySelector('.theme-toggle i').classList.toggle('fa-sun');
+        }
+
+        // Language Toggle (Simple: Switch dir and texts)
+        function toggleLang() {
+            const body = document.body;
+            const isArabic = body.lang === 'ar';
+            body.lang = isArabic ? 'en' : 'ar';
+            body.dir = isArabic ? 'ltr' : 'rtl';
+            body.style.fontFamily = isArabic ? "'Tajawal', sans-serif" : "'Poppins', sans-serif";
+            // Update texts - For full support, use data-ar/en attributes
+            location.reload(); // Simple reload for demo; implement properly with JS
+        }
+
+        // QR Code Generation (Add qrcode library for real)
+        // For demo, placeholder
+    </script>
+
+</body>
+  </html>
