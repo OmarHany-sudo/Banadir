@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banadir - مطعم وكافيه سوداني أصيل في مصر</title>
+    <title>Banadir - Somali Restaurant and Cafe in Egypt</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #2C1A12; /* بني داكن */
-            --accent-gold: #D4A017; /* ذهبي */
+            --bg-primary: #2C1A12; /* Dark brown */
+            --accent-gold: #D4A017; /* Gold */
             --text-light: #F5F5F5;
-            --text-dark: #FFFFFF;
+            --text-dark: #1A1A1A;
             --card-bg: #3E2F27;
             --shadow: 0 4px 12px rgba(0,0,0,0.3);
             --transition: all 0.3s ease;
@@ -26,10 +26,10 @@
 
         body {
             margin: 0;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
@@ -82,144 +82,69 @@
             color: var(--text-dark);
         }
 
-        /* Sections */
-        section {
+        /* Menu Section */
+        #menu {
             padding: 3rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Home */
-        #home {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        h2 {
+            font-size: 2rem;
+            color: var(--accent-gold);
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            margin-bottom: 2rem;
         }
 
-        .welcome-text {
+        .menu-category {
+            margin-bottom: 2rem;
+        }
+
+        .menu-category h3 {
             font-size: 1.5rem;
-            margin: 1rem 0;
-            max-width: 80%;
-        }
-
-        .cta-btn {
-            background: var(--accent-gold);
-            color: var(--text-dark);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .cta-btn:hover {
-            background: #E0B01F;
-            transform: scale(1.05);
-        }
-
-        /* Menu */
-        #menu {
-            background: var(--card-bg);
             color: var(--text-light);
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-gold);
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-content {
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 1rem;
-            text-align: center;
-        }
-
-        .card h3 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--accent-gold);
-            margin: 0.5rem 0;
-        }
-
-        .price {
-            font-size: 1.3rem;
-            color: var(--accent-gold);
-        }
-
-        /* Offers */
-        #offers .banner {
-            background: linear-gradient(rgba(212, 175, 55, 0.2), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 15px;
-            color: var(--text-light);
-        }
-
-        /* About */
-        #about {
-            text-align: center;
-        }
-
-        #about img {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 15px;
-            margin-top: 2rem;
-        }
-
-        /* Contact */
-        .contact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .contact-icons a {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-gold);
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
             transition: var(--transition);
         }
 
-        .contact-icons a:hover {
-            background: #E0B01F;
+        .menu-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
         }
 
-        #map {
-            width: 100%;
-            height: 300px;
-            border-radius: 15px;
-            margin-top: 1rem;
+        .menu-item .name {
+            font-size: 1.2rem;
+        }
+
+        .menu-item .price {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* Additional Info */
+        #additional-info {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: var(--card-bg);
+            margin-top: 2rem;
+            border-radius: 10px;
+        }
+
+        #additional-info p {
+            margin: 0.5rem 0;
         }
 
         /* Fixed Contact Button */
@@ -249,22 +174,18 @@
                 font-size: 1.5rem;
             }
 
-            .welcome-text {
-                font-size: 1.2rem;
+            h2 {
+                font-size: 1.5rem;
             }
 
-            .cta-btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-icons {
+            .menu-item {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
+            }
+
+            .menu-item .name,
+            .menu-item .price {
+                margin: 0.5rem 0;
             }
 
             .fixed-btn {
@@ -274,6 +195,11 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* For Arabic */
+        [lang="ar"] body {
+            font-family: 'Tajawal', sans-serif;
+        }
     </style>
 </head>
 <body data-theme="light">
@@ -282,73 +208,106 @@
         <nav>
             <div class="logo">Banadir</div>
             <div class="nav-controls">
-                <button class="lang-toggle" onclick="toggleLang()">EN</button>
+                <button class="lang-toggle" onclick="toggleLang()">AR</button>
                 <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
             </div>
         </nav>
     </header>
 
-    <section id="home">
-        <h1 class="logo" style="font-size: 3rem;">Banadir</h1>
-        <p class="welcome-text">Banadir… الطابع السوداني الأصيل في قلب مصر</p>
-        <button class="cta-btn" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">شاهد المينيو</button>
-    </section>
-
     <section id="menu">
-        <h2>المينيو</h2>
-        <div class="grid">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="كسره">
-                <div class="card-content">
-                    <h3>كسره</h3>
-                    <p>طبق تقليدي سوداني شهي.</p>
-                    <div class="price">50 جنيه</div>
-                </div>
+        <h2 class="translatable" data-en="Menu" data-ar="المينيو">Menu</h2>
+
+        <div class="menu-category">
+            <h3 class="translatable" data-en="Breakfast Menu" data-ar="قائمة الإفطار">Breakfast Menu</h3>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Shakshuka" data-ar="شكشوكة">Shakshuka</span>
+                <span class="price">120 EGP</span>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1529693662653-38d54a4f75cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="مشويات">
-                <div class="card-content">
-                    <h3>مشويات</h3>
-                    <p>لحوم مشوية طازجة.</p>
-                    <div class="price">80 جنيه</div>
-                </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Egg with Toast" data-ar="بيض مع توست">Egg with Toast</span>
+                <span class="price">100 EGP</span>
             </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1513553404607-9881d7b0b407?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="شاي سوداني">
-                <div class="card-content">
-                    <h3>شاي سوداني</h3>
-                    <p>مشروب تقليدي منعش.</p>
-                    <div class="price">20 جنيه</div>
-                </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Omelet" data-ar="أومليت">Omelet</span>
+                <span class="price">100 EGP</span>
             </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Liver" data-ar="كبد">Liver</span>
+                <span class="price">130 EGP</span>
+            </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Anboula" data-ar="أنبولة">Anboula</span>
+                <span class="price">70 EGP</span>
+            </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Suqaar" data-ar="سوقار">Suqaar</span>
+                <span class="price">230 EGP</span>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h3 class="translatable" data-en="Bar Banaadir Food Menu" data-ar="قائمة الطعام">Bar Banaadir Food Menu</h3>
+            <h4 class="translatable" data-en="Breakfast" data-ar="الإفطار">Breakfast</h4>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Beer" data-ar="بير">Beer</span>
+                <span class="price">130 EGP</span>
+            </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Shakshuka" data-ar="شكشوكة">Shakshuka</span>
+                <span class="price">120 EGP</span>
+            </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Shakshuka Normal" data-ar="شكشوكة عادية">Shakshuka Normal</span>
+                <span class="price">100 EGP</span>
+            </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Sugar" data-ar="سكر">Sugar</span>
+                <span class="price">230 EGP</span>
+            </div>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Chapati" data-ar="شاباتي">Chapati</span>
+                <span class="price">25 EGP</span>
+            </div>
+            <h4 class="translatable" data-en="Signature Dishes" data-ar="الأطباق الرئيسية">Signature Dishes</h4>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Hanid" data-ar="هنيد">Hanid</span>
+                <span class="price">450 EGP</span>
+            </div>
+            <!-- Add the rest of the signature dishes similarly -->
+            <div class="menu-item">
+                <span class="name translatable" data-en="Platter For 4/5 People" data-ar="صحن لـ 4/5 أشخاص">Platter For 4/5 People</span>
+                <span class="price">2,500 EGP</span>
+            </div>
+            <h4 class="translatable" data-en="Extras" data-ar="إضافات">Extras</h4>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Extra Hanid" data-ar="هنيد إضافي">Extra Hanid</span>
+                <span class="price">380 EGP</span>
+            </div>
+            <!-- Add other extras -->
+        </div>
+
+        <!-- Add Asriya, Dessert Menu, Drinks Menu categories similarly with data-en and data-ar -->
+
+        <div class="menu-category">
+            <h3 class="translatable" data-en="Drinks Menu" data-ar="قائمة المشروبات">Drinks Menu</h3>
+            <h4 class="translatable" data-en="Cold Drinks" data-ar="مشروبات باردة">Cold Drinks</h4>
+            <div class="menu-item">
+                <span class="name translatable" data-en="Rayeb" data-ar="رايب">Rayeb</span>
+                <span class="price">15 EGP</span>
+            </div>
+            <!-- Add others -->
+        </div>
+
+        <div id="additional-info">
+            <h3 class="translatable" data-en="Additional Information" data-ar="معلومات إضافية">Additional Information</h3>
+            <p class="translatable" data-en="Operating Hours: 10 AM - 12 Midnight" data-ar="ساعات العمل: 10 صباحًا - 12 منتصف ليل">Operating Hours: 10 AM - 12 Midnight</p>
+            <p class="translatable" data-en="Contact Number: 0223821222" data-ar="رقم الاتصال: 0223821222">Contact Number: 0223821222</p>
+            <p class="translatable" data-en="Location: 35 Al Sad Al Aali, Nasr City, Cairo, Egypt" data-ar="الموقع: 35 الصد العالي، مدينة نصر، القاهرة، مصر">Location: 35 Al Sad Al Aali, Nasr City, Cairo, Egypt</p>
         </div>
     </section>
 
-    <section id="offers">
-        <h2>العروض الخاصة</h2>
-        <div class="banner">
-            <h3>عرض الأسبوع: كسره + مشروب بـ 60 جنيه!</h3>
-        </div>
-    </section>
-
-    <section id="about">
-        <h2>عن Banadir</h2>
-        <p>Banadir يجمع بين الأصالة السودانية والذوق العصري ليقدم لك تجربة فريدة.</p>
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="ديكور المطعم">
-    </section>
-
-    <section id="contact">
-        <h2>اتصل بنا</h2>
-        <div class="contact-icons">
-            <a href="tel:+20123456789"><i class="fas fa-phone"></i></a>
-            <a href="https://wa.me/20123456789"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://maps.google.com/?q=cairo"><i class="fas fa-map-marker-alt"></i></a>
-        </div>
-        <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450.123456789!2d31.235712!3d30.044419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDI2JzUxLjQiTiAzMcKwMTQnMDcuNCJF!5e0!3m2!1sen!2sus!4v1630000000000" allowfullscreen="" loading="lazy"></iframe>
-    </section>
-
-    <button class="fixed-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
-        <i class="fas fa-phone"></i> اتصل بنا
+    <button class="fixed-btn translatable" data-en="Contact Us" data-ar="اتصل بنا" onclick="window.location.href='tel:+20223821222'">
+        <i class="fas fa-phone"></i> Contact Us
     </button>
 
     <script>
@@ -361,12 +320,17 @@
         }
 
         function toggleLang() {
-            const body = document.body;
-            const isArabic = body.lang === 'ar';
-            body.lang = isArabic ? 'en' : 'ar';
-            body.dir = isArabic ? 'ltr' : 'rtl';
-            document.querySelector('.lang-toggle').textContent = isArabic ? 'AR' : 'EN';
-            location.reload(); // Simple reload for demo
+            const html = document.documentElement;
+            const currentLang = html.lang;
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+            html.lang = newLang;
+            html.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelector('.lang-toggle').textContent = newLang === 'ar' ? 'EN' : 'AR';
+
+            // Update all translatable elements
+            document.querySelectorAll('.translatable').forEach(el => {
+                el.textContent = el.getAttribute(`data-${newLang}`);
+            });
         }
     </script>
 
